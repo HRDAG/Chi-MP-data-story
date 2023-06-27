@@ -1,6 +1,9 @@
 # Chi-MP-data-story
 This is intended to be a public repo that uses the HRDAG/US-II-MP missing persons database as an input to a brief series of Jupyter notebooks, covering various themes that make up the data story behind missing persons reports in Chicago, IL..
 
+# dataset
+The dataset used in this repo is an export from a private parent repo, HRDAG/US-II-MP, which takes a collection of documents received through FOIA requests as input and builds a formatted table to use for analysis. As the investigation is ongoing, the data in that parent repo continues into 2023 and includes an expanding list of features, but here we limit the dataset to 1 January 2000 - 31 December 2022 and features we intend to include in analysis.
+
 # Topics
 
 ### 1. What is an event?
@@ -102,11 +105,28 @@ In the case of JA172886, there is a handwritten Incident Report including a narr
 ### 5. Naming Names: Detectives and (Still) Missing Persons
 - Primary: BP
 
-- Most frequently observed detective/investigator assigned
-- Yaverski, Brian
+##### officers
+- ((Bonus points if you look them up in CPDP))
+- top 5 most frequently observed detective/investigator assigned (caseload, distribution of case status, assignment vs closure vs active case rates, time to close groups)
+    * comments on potential context, explanations, reasonable and observed ranges
+- Yaverski, Brian (his assigned cases and the things that have been shared with us about peoples encounters with him)
+- for all currently "open assigned" records, distribution of detective/investigator assigned
+- rates of closed non criminal status across the board. examples of homicide and still missing victims in the data classified as closed non criminal and their associated det/inv assigned. ((any specific FOIA and/or interview details welcome))
+
+##### missing humans
+- names of individuals we've identified as missing from Chicago, who are **still missing**, and what their records show. ((any details from interviews welcome))
+- names of individuals we've identified as having been missing from Chicago, who were later found as the **victim of a homicide**, and what their records show. ((any specific FOIA and/or interview details welcome))
 
 ### 6. What else did we observe?
 - Primary: None atm
 
+- high risk individuals, day/month old persons, missing adult with child reports
+- details and important tangents from the original incident reports and other FOIA materials
+- observances of changed statuses between first and last FOIA of the core MP dataset. are det/inv the same in each version?
+- 'historical' rdnos (from reports between 2000-2019) that are missing in at least one version of the table. demographics, beat occurred, time to arrive and close, status
+- that one time a police rep (the chief or commissioner?) said 99% of MP reports end up with the person coming home... where did that number come from and which variables are involved in the quote? is it reasonable to use those variables to make that claim?
+
 ### Summary
-- 
+- summary of data story
+- status of MP investigation by II
+- outstanding questions
