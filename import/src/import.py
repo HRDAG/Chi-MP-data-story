@@ -5,8 +5,15 @@
 # Maintainers: BP
 # Copyright:   2023, HRDAG, GPL v2 or later
 # =========================================
+# dependencies {{{
+from pathlib import Path
+from sys import stdout
+import argparse
+import logging
+import pandas as pd
+# }}}
 
-# {{{
+# support methods {{{
 def get_args():
     parser = argparse.ArgumentParser()
     parser.add_argument("--input", default=None)
@@ -39,8 +46,15 @@ if __name__ == '__main__':
     # arg handling
     args = get_args()
     mp = pd.read_parquet(args.input)
+    logger.info(f'read table with shape:\t{mp.shape[0]}')
+    logger.info(f'found columns:\n{sorted(mp.columns)}')
 
-    # apply minor filtering to prep output
+    logger.info('applying filter steps')
     mp = mp.loc[mp.year_occurred < 2023]
-
+    mp.info()
+    
+    logger.info(f'writing table with shape:\t{mp.shape[0]}')
     mp.to_parquet(args.output)
+    
+    logger.info('done')
+# done
