@@ -32,7 +32,6 @@ help: # is this group meant as individuals asking for help? or like topic groups
     gun:
     - SHOTS FIRED
     - PERSON SHOT
-    - PERSON WITH A GUN
     mp:
     - CHILD ABDUCTION
     - MISSING PER. TENDER AGE
@@ -46,6 +45,7 @@ help: # is this group meant as individuals asking for help? or like topic groups
     - ASSAULT
     - EMS # the rest of these are all/mostly CPD calls
     noinjury_report: # no explicitly stated injury, but injury could be unknown to caller / imminent / other factor
+    - PERSON WITH A GUN
     - PERSON CALLING FOR HELP
     - ASSIST CITIZEN
     - CHILD LEFT ALONE
