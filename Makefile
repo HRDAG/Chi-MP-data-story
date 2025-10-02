@@ -5,25 +5,33 @@
 # Copyright:   2025 HRDAG, GPL v2 or later
 # =========================================
 
-intro := notebooks/data_story_story-pj.ipynb
-nb1 := notebooks/what-is-an-mp-event-nb1-pj.ipynb
+intro := data_story_story-pj
+nb1 := what-is-an-mp-event-nb1-pj
+nb2 := what-happens-after-mp-event-nb2-pj
 
 .PHONY: all clean nb1_html
 
-all: intro_html nb1_html
+all: output/$(intro).html \
+	output/$(nb1).html \
+	output/$(nb2).html
 
 clean:
 	-rm output/*
 
-intro_html:
-	jupyter nbconvert --to notebook --inplace --execute $(intro)
-	jupyter nbconvert --to html --template pj $(intro)
-	mv notebooks/data_story_story-pj.html output
+output/$(intro).html: notebooks/$(intro).ipynb
+	jupyter nbconvert --to notebook --inplace --execute notebooks/$(intro).ipynb
+	jupyter nbconvert --to html --template pj notebooks/$(intro).ipynb
+	mv notebooks/$(intro).html $@
 
-nb1_html:
-	jupyter nbconvert --to notebook --inplace --execute $(nb1)
-	jupyter nbconvert --to html --template pj $(nb1)
-	mv notebooks/what-is-an-mp-event-nb1-pj.html output
+output/$(nb1).html: notebooks/$(nb1).ipynb
+	jupyter nbconvert --to notebook --inplace --execute notebooks/$(nb1).ipynb
+	jupyter nbconvert --to html --template pj notebooks/$(nb1).ipynb output/$(nb1).html
+	mv notebooks/$(nb1).html $@
+
+output/$(nb2).html: notebooks/$(nb2).ipynb
+	jupyter nbconvert --to notebook --inplace --execute notebooks/$(nb2).ipynb
+	jupyter nbconvert --to html --template pj notebooks/$(nb2).ipynb output/$(nb2).html
+	mv notebooks/$(nb2).html output/$(nb2).html
 
 
 # done.
