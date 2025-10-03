@@ -9,7 +9,7 @@ intro := data_story_story-pj
 nb1 := what-is-an-mp-event-nb1-pj
 nb2 := what-happens-after-mp-event-nb2-pj
 
-.PHONY: all clean nb1_html
+.PHONY: all clean
 
 all: output/$(intro).html \
 	output/$(nb1).html \
@@ -25,13 +25,13 @@ output/$(intro).html: notebooks/$(intro).ipynb
 
 output/$(nb1).html: notebooks/$(nb1).ipynb
 	jupyter nbconvert --to notebook --inplace --execute notebooks/$(nb1).ipynb
-	jupyter nbconvert --to html --template pj notebooks/$(nb1).ipynb output/$(nb1).html
+	jupyter nbconvert --to html --template pj notebooks/$(nb1).ipynb
 	mv notebooks/$(nb1).html $@
 
 output/$(nb2).html: notebooks/$(nb2).ipynb
 	jupyter nbconvert --to notebook --inplace --execute notebooks/$(nb2).ipynb
-	jupyter nbconvert --to html --template pj notebooks/$(nb2).ipynb output/$(nb2).html
-	mv notebooks/$(nb2).html output/$(nb2).html
+	jupyter nbconvert --to html --template pj notebooks/$(nb2).ipynb
+	mv notebooks/$(nb2).html $@
 
 
 # done.
