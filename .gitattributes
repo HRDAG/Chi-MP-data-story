@@ -1,4 +1,2 @@
-import/input/mp.parquet filter=lfs diff=lfs merge=lfs -text
-import/input/extras.parquet filter=lfs diff=lfs merge=lfs -text
 *.parquet filter=lfs diff=lfs merge=lfs -text
 *output/* filter=lfs diff=lfs merge=lfs -text
