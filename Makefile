@@ -5,33 +5,29 @@
 # Copyright:   2025 HRDAG, GPL v2 or later
 # =========================================
 
-intro := data_story_story-pj
-nb1 := what-is-an-mp-event-nb1-pj
-nb2 := what-happens-after-mp-event-nb2-pj
+SRC_DIR := notebooks
+intro := $(SRC_DIR)/data_story_story-pj.ipynb
+nb1 := $(SRC_DIR)/what-is-an-mp-event-nb1-pj.ipynb
+nb2 := $(SRC_DIR)/what-happens-after-mp-event-nb2-pj.ipynb
+SOURCES := $(intro) $(nb1) $(nb2)
+
+OUT_DIR := output
+CHAPTERS := $(patsubst $(SRC_DIR)/%.ipynb, $(OUT_DIR)/%.html, $(SOURCES))
 
 .PHONY: all clean
 
-all: output/$(intro).html \
-	output/$(nb1).html \
-	output/$(nb2).html
+all: $(CHAPTERS)
 
 clean:
-	-rm output/*
+	-rm $(OUT_DIR)/*
 
-output/$(intro).html: notebooks/$(intro).ipynb
-	jupyter nbconvert --to notebook --inplace --execute notebooks/$(intro).ipynb
-	jupyter nbconvert --to html --template pj notebooks/$(intro).ipynb
-	mv notebooks/$(intro).html $@
+$(OUT_DIR)/%.html: $(SRC_DIR)/%.ipynb | $(OUT_DIR)
+	jupyter nbconvert --to notebook --inplace --execute $<
+	jupyter nbconvert --to html --template pj $<
+	mv notebooks/$*.html $@
+	
 
-output/$(nb1).html: notebooks/$(nb1).ipynb
-	jupyter nbconvert --to notebook --inplace --execute notebooks/$(nb1).ipynb
-	jupyter nbconvert --to html --template pj notebooks/$(nb1).ipynb
-	mv notebooks/$(nb1).html $@
-
-output/$(nb2).html: notebooks/$(nb2).ipynb
-	jupyter nbconvert --to notebook --inplace --execute notebooks/$(nb2).ipynb
-	jupyter nbconvert --to html --template pj notebooks/$(nb2).ipynb
-	mv notebooks/$(nb2).html $@
-
+$(OUT_DIR):
+	mkdir -p $@
 
 # done.
